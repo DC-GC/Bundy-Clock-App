@@ -1,0 +1,35 @@
+{
+    "attendance_logs": [
+        {
+            "clockType": "IN",
+            "date": "07/12/22",
+            "time": "08:27 AM"
+        },
+        {
+            "clockType": "OUT",
+            "date": "07/11/22",
+            "time": "06:01 PM"
+        },
+        {
+            "clockType": "IN",
+            "date": "07/11/22",
+            "time": "08:27 AM"
+        },
+        {
+            "clockType": "OUT",
+            "date": "07/08/22",
+            "time": "06:10 AM"
+        },
+        {
+            "clockType": "IN",
+            "date": "07/08/22",
+            "time": "08:00 AM"
+        }, 
+        {
+            "clockType": "IN",
+            "date": "07/05/22",
+            "time": "06:30 PM"
+        }
+       
+    ]
+}

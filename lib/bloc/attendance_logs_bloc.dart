@@ -17,7 +17,7 @@ class AttendanceLogBloc extends Bloc<AttendanceLogEvent, AttendanceLogState>{
     emit(AttendanceLogLoadingState());
     try{
       final attendanceLogAPIResponse = await LogsDatasource().getLogs();
-      emit(AttendanceLogSuccessfulState(attendanceLogs: attendanceLogAPIResponse.attendanceLogs , finalPage: attendanceLogAPIResponse.lastPage));
+      emit(AttendanceLogSuccessfulState(attendanceLogs: attendanceLogAPIResponse.attendanceLogs , finalPage: true));
     }on Error catch(e){
       print(e);
       emit(AttendanceLogLoadFailedState(error: e));

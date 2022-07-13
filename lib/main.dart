@@ -1,5 +1,13 @@
-import 'package:bundy_clock/widgets/application_widgets.dart';
+import 'package:bundy_clock/bloc/attendance_logs_bloc.dart';
+import 'package:bundy_clock/bloc/attendance_logs_events.dart';
+import 'package:bundy_clock/bloc/attendance_logs_state.dart';
+import 'package:bundy_clock/datasource/attendance_logs_datasource.dart';
+import 'package:bundy_clock/models/attendance_log_API_response_model.dart';
+import 'package:bundy_clock/models/attendance_log_model.dart';
+import 'package:bundy_clock/pages/initial_page.dart';
+import 'package:bundy_clock/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +19,35 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => AttendanceLogBloc()..add(AttendanceLogAPIRequest(
+          // attendanceLogs: [
+          //   AttendanceLog(
+          //     clockType: 'IN',
+          //     date: '07/12/22',
+          //     time: '08:27 AM'),
+          //   AttendanceLog(
+          //     clockType: 'OUT',
+          //     date: '07/11/22',
+          //     time: '06:01 PM'),
+          //   AttendanceLog(
+          //     clockType: 'IN',
+          //     date: '07/11/22',
+          //     time: '08:26 AM'),
+          //   AttendanceLog(
+          //     clockType: 'OUT',
+          //     date: '07/08/22',
+          //     time: '06:00 PM'),
+
+          // ]
+          ),
+          
+          ),
+      ),
+    ], 
+    child:MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -25,8 +61,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+      home: InitialPage(),
+    )
+  );
   }
 }
 
