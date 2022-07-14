@@ -11,7 +11,6 @@ class LogsDatasource{
     final String response = await rootBundle.loadString('assets/input_data.json');
     
     final json =await jsonDecode(response);
-    print(json);
     return AttendanceLogAPIResponse.fromJson(json);
 
   }

@@ -27,11 +27,9 @@ class InitialPage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Expanded(
-                        child:ListView.builder(
-                        itemCount: state.attendanceLogs.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index){
+                     
+                      _buildListViewWidget(state.attendanceLogs.length, 
+                        (context, index) {
                           if(index<state.attendanceLogs.length){
                             return ListTile(title: Text(state.attendanceLogs[index].date,));
 
@@ -39,17 +37,10 @@ class InitialPage extends StatelessWidget {
                             return const Padding(padding: EdgeInsets.symmetric(vertical: 24),
                             child: Center(child: CircularProgressIndicator()));
                           }
-                        }, 
-                        
-                      ), 
-                      
-                      ),
-
-                      Expanded(
-                        child:ListView.builder(
-                        itemCount: state.attendanceLogs.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index){
+                        }),
+                     
+                      _buildListViewWidget(state.attendanceLogs.length, 
+                        (context, index){
                           if(index<state.attendanceLogs.length){
                             return ListTile(
                               title: Text(state.attendanceLogs[index].clockType,
@@ -59,28 +50,18 @@ class InitialPage extends StatelessWidget {
                             return const Padding(padding: EdgeInsets.symmetric(vertical: 24),
                             child: Center(child: CircularProgressIndicator()));
                           }
-                        }, 
-                        
-                      ), 
+
+                        }),
                       
-                      ),
-                      Expanded(
-                        child:ListView.builder(
-                        itemCount: state.attendanceLogs.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index){
+                      _buildListViewWidget(state.attendanceLogs.length,  
+                        (context, index) {
                           if(index<state.attendanceLogs.length){
                             return ListTile(title: Text(state.attendanceLogs[index].time,));
-
                           }else{
-                            return const Padding(padding: EdgeInsets.symmetric(vertical: 24),
+                          return const Padding(padding: EdgeInsets.symmetric(vertical: 24),
                             child: Center(child: CircularProgressIndicator()));
                           }
-                        }, 
-                        
-                      ), 
-                      
-                      ),
+                         }),
                     ],
                   ),
                   
@@ -99,5 +80,20 @@ class InitialPage extends StatelessWidget {
       ),
     );
     
+  }
+
+
+  Widget _buildListViewWidget(int itemCount, IndexedWidgetBuilder itemBuilder){
+
+    return Expanded(
+      child:ListView.builder(
+      itemCount: itemCount,
+      shrinkWrap: true,
+      itemBuilder: itemBuilder,
+                        
+      ), 
+                      
+    );
+
   }
 }
